@@ -31,14 +31,14 @@ class DBHelper {
   }
 
   //Adicionando estudantes ao banco de dados
-  Future<Student> getStudents(Student student) async {
+  Future<Student> add(Student student) async {
     var dbClient = await db;
     student.id = await dbClient.insert('student', student.toMap());
     return student;
   }
 
   //Listar todos os estudantes do banco de dados
-  Future<List<Student>> getStudent() async {
+  Future<List<Student>> getStudents() async {
     var dbClient = await db;
     List<Map> map = await dbClient.query('student', columns: ['id', 'name']);
     List<Student> students = [];
